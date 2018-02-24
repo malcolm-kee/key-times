@@ -1,13 +1,37 @@
-import { IAction, IKeyList, IStore, IEvent } from '../constants/types';
+import {
+  IAction,
+  IKeyList,
+  IStore,
+  IEvent,
+  ICalendarEvent
+} from '../constants/types';
 import { EActionKey } from '../constants/enum';
+import { CalendarEvent } from '../models/CalendarEvent';
+
+// faking data
+// const DEFAULT_STATE: IStore = {
+//   data: {}
+// };
 
 const DEFAULT_STATE: IStore = {
-  data: {}
+  data: {
+    a111: {
+      id: 'a111',
+      title: 'Quick Chat',
+      startDate: new Date(2018, 1, 27, 8, 20).toISOString(),
+      endDate: new Date(2018, 1, 27, 11, 30).toISOString()
+    },
+    a112: {
+      id: 'a112',
+      title: 'Slow Chat',
+      startDate: new Date(2018, 1, 27, 12, 20).toISOString(),
+      endDate: new Date(2018, 1, 27, 12, 30).toISOString()
+    }
+  }
 };
 
 export const rootReducer = (
   state: IStore = DEFAULT_STATE,
-  // tslint:disable-next-line:no-any
   action: IAction
 ): IStore => {
   switch (action.type) {
@@ -38,3 +62,7 @@ export const rootReducer = (
       return state;
   }
 };
+
+/* selectors */
+export const selectEvents = (state: IStore): ICalendarEvent[] =>
+  Object.keys(state.data).map(idKey => new CalendarEvent(state.data[idKey]));

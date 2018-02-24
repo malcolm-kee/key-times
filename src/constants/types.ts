@@ -26,3 +26,12 @@ export interface IEvent {
   // reminder:
   // note:
 }
+
+export interface ICalendarEvent {
+  id: string;
+  startDate: Date;
+  endDate: Date;
+  title: string;
+  getPlainObj: () => IEvent;
+  getPeriod: () => string;
+}

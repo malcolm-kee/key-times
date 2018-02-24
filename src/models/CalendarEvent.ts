@@ -1,6 +1,7 @@
-import { IEvent } from '../constants/types';
+import { IEvent, ICalendarEvent } from '../constants/types';
+import { getFriendlyPeriod } from '../utils/date';
 
-export class CalendarEvent {
+export class CalendarEvent implements ICalendarEvent {
   id: string;
   title: string;
   startDate: Date;
@@ -20,5 +21,9 @@ export class CalendarEvent {
       startDate: this.startDate.toISOString(),
       endDate: this.endDate.toISOString()
     };
+  }
+
+  getPeriod(): string {
+    return getFriendlyPeriod(this.startDate, this.endDate);
   }
 }

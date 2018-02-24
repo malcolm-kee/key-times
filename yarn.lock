@@ -10,22 +10,9 @@
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/jss/-/jss-9.3.0.tgz#0f8484fd03ded206917be27b58217f274a0ad59f"
 
-"@types/material-ui@^0.20.7":
-  version "0.20.7"
-  resolved "https://registry.yarnpkg.com/@types/material-ui/-/material-ui-0.20.7.tgz#2c93f9a8f9531779b2b33efd6caf354c5852319e"
-  dependencies:
-    "@types/react" "*"
-    "@types/react-addons-linked-state-mixin" "*"
-
 "@types/node@*", "@types/node@^9.4.6":
   version "9.4.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.4.6.tgz#d8176d864ee48753d053783e4e463aec86b8d82e"
-
-"@types/react-addons-linked-state-mixin@*":
-  version "0.14.19"
-  resolved "https://registry.yarnpkg.com/@types/react-addons-linked-state-mixin/-/react-addons-linked-state-mixin-0.14.19.tgz#7ef00a5618a089da4a99e1f58c9aa4c1781d46d5"
-  dependencies:
-    "@types/react" "*"
 
 "@types/react-dom@^16.0.4":
   version "16.0.4"
