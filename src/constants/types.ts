@@ -16,7 +16,8 @@ export interface IAction<P = any> {
 
 export interface IEvent {
   id: string;
-  date: Date;
+  startDate: string;
+  endDate: string;
   title: string;
   // @TODO
   // location:

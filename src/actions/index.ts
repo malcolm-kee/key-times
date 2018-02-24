@@ -7,7 +7,7 @@ export const setEvents = (
 ): IAction<{ data: IEvent[] }> => ({
   type: EActionKey.SET_EVENTS,
   payload: {
-    data: events.map(calendar => calendar.getPlainObj())
+    data: events.map(event => event.getPlainObj())
   }
 });
 

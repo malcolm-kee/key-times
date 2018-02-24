@@ -6,13 +6,15 @@ describe('rootReducer', () => {
   const event1 = {
     id: '129d',
     title: 'Important agenda',
-    date: new Date(2018, 0, 12)
+    startDate: new Date(2018, 0, 12).toISOString(),
+    endDate: new Date(2018, 0, 12, 1).toISOString()
   };
 
   const event2 = {
     id: 'ds102-3',
     title: 'Another agenda',
-    date: new Date(2018, 2, 12)
+    startDate: new Date(2018, 2, 12).toISOString(),
+    endDate: new Date(2018, 2, 13).toISOString()
   };
 
   test('set events', () => {
