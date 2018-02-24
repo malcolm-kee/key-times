@@ -10,9 +10,36 @@ interface IProps {
   events: ICalendarEvent[];
 }
 
-class AgendaListContainer extends React.Component<IProps> {
+interface IState {
+  showAddEventForm: boolean;
+}
+
+class AgendaListContainer extends React.Component<IProps, IState> {
+  state: IState = {
+    showAddEventForm: false
+  };
+
+  handleShowAddEventForm = () => {
+    this.setState({
+      showAddEventForm: true
+    });
+  };
+
+  handleHideAddEventForm = () => {
+    this.setState({
+      showAddEventForm: false
+    });
+  };
+
   render() {
-    return <AgendaListView events={this.props.events} />;
+    return (
+      <AgendaListView
+        events={this.props.events}
+        showAddEventForm={this.state.showAddEventForm}
+        onShowAddEventForm={this.handleShowAddEventForm}
+        onHideAddEventForm={this.handleHideAddEventForm}
+      />
+    );
   }
 }
 

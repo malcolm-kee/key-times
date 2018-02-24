@@ -13,6 +13,7 @@ const decorate = withStyles((theme: Theme) => {
     height: '100vh'
   };
   const content: React.CSSProperties = {
+    display: 'flex',
     flex: 1,
     overflowY: 'scroll'
   };

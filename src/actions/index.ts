@@ -1,3 +1,5 @@
+import * as uuid from 'uuid/v4';
+
 import { IAction, IEvent } from '../constants/types';
 import { EActionKey } from '../constants/enum';
 import { CalendarEvent } from '../models/CalendarEvent';
@@ -11,7 +13,16 @@ export const setEvents = (
   }
 });
 
-export const addEvent = (event: CalendarEvent): IAction<IEvent> => ({
+export const addEvent = (
+  title: string,
+  startDate: string,
+  endDate: string
+): IAction<IEvent> => ({
   type: EActionKey.ADD_EVENT,
-  payload: event.getPlainObj()
+  payload: {
+    title,
+    startDate,
+    endDate,
+    id: uuid()
+  }
 });

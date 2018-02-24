@@ -33,18 +33,27 @@ describe('rootReducer', () => {
   });
 
   test('add event', () => {
-    const testData = new CalendarEvent(event1);
+    const testData = event1;
+    const action = addEvent(
+      testData.title,
+      testData.startDate,
+      testData.endDate
+    );
     const initialState = {
       data: {
         [event2.id]: event2
       }
     };
+    if (typeof action.payload === 'undefined') {
+      throw Error();
+    }
     const finalState = {
       data: {
         [event2.id]: event2,
-        [event1.id]: event1
+        [action.payload.id as string]: action.payload
       }
     };
-    expect(rootReducer(initialState, addEvent(testData))).toEqual(finalState);
+
+    expect(rootReducer(initialState, action)).toEqual(finalState);
   });
 });
