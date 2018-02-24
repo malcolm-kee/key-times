@@ -1,0 +1,6 @@
+export enum EActionKey {
+  SET_EVENTS = 'SET_EVENTS',
+  ADD_EVENT = 'ADD_EVENT',
+  EDIT_EVENT = 'EDIT_EVENT',
+  DELETE_EVENT = 'DELETE_EVENT'
+}
