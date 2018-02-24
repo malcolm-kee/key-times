@@ -8,6 +8,7 @@ interface IFormValues {
   title: string;
   startDate: string;
   startTime: string;
+  endDate: string;
   endTime: string;
 }
 
