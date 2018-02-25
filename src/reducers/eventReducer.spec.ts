@@ -1,8 +1,8 @@
-import { rootReducer } from './index';
+import { eventReducer } from './eventReducer';
 import { CalendarEvent } from '../models/CalendarEvent';
 import { setEvents, addEvent } from '../actions';
 
-describe('rootReducer', () => {
+describe('eventReducer', () => {
   const event1 = {
     id: '129d',
     title: 'Important agenda',
@@ -29,7 +29,7 @@ describe('rootReducer', () => {
       }
     };
 
-    expect(rootReducer(initialState, setEvents(testData))).toEqual(finalState);
+    expect(eventReducer(initialState, setEvents(testData))).toEqual(finalState);
   });
 
   test('add event', () => {
@@ -54,6 +54,6 @@ describe('rootReducer', () => {
       }
     };
 
-    expect(rootReducer(initialState, action)).toEqual(finalState);
+    expect(eventReducer(initialState, action)).toEqual(finalState);
   });
 });

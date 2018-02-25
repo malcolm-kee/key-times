@@ -4,8 +4,12 @@ export interface IKeyList<T> {
   [key: string]: T;
 }
 
-export interface IStore {
+export interface IEventStore {
   data: IKeyList<IEvent>;
+}
+
+export interface IStore {
+  event: IEventStore;
 }
 
 // tslint:disable-next-line:no-any
