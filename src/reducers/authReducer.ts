@@ -1,35 +1,29 @@
 import { EAuthState, EActionKey } from '../constants/enum';
-import { IAuthStore, IAction } from '../constants/types';
+import { IAuthStore, IAction, IUser } from '../constants/types';
 
 const DEFAULT_STATE: IAuthStore = {
   status: EAuthState.ANONYMOUS,
-  userName: null,
-  userEmail: null,
-  userPhotoUrl: null,
-  errorMessage: null
+  errorMessage: null,
+  user: null
 };
 
 export const authReducer = (
   state: IAuthStore = DEFAULT_STATE,
-  action: IAction
+  action: IAction<IUser>
 ): IAuthStore => {
   switch (action.type) {
     case EActionKey.LOGIN_SUCCESS:
       return {
         ...state,
         status: EAuthState.LOGGED_IN,
-        userName: action.payload.userName,
-        userEmail: action.payload.userEmail,
-        userPhotoUrl: action.payload.userPhotoUrl
+        user: action.payload
       };
 
     case EActionKey.LOGOUT_SUCCESS:
       return {
         ...state,
         status: EAuthState.ANONYMOUS,
-        userName: null,
-        userEmail: null,
-        userPhotoUrl: null
+        user: null
       };
 
     default:

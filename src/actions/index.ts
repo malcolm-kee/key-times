@@ -1,6 +1,6 @@
 import * as uuid from 'uuid/v4';
 
-import { IAction, IEvent } from '../constants/types';
+import { IAction, IEvent, IUser } from '../constants/types';
 import { EActionKey } from '../constants/enum';
 import { CalendarEvent } from '../models/CalendarEvent';
 
@@ -31,15 +31,16 @@ export const loginSuccess = (
   userEmail: string,
   userName: string,
   userPhotoUrl: string
-): IAction => ({
+): IAction<IUser> => ({
   type: EActionKey.LOGIN_SUCCESS,
   payload: {
-    userEmail,
-    userName,
-    userPhotoUrl
+    name: userName,
+    email: userEmail,
+    photoUrl: userPhotoUrl
   }
 });
 
 export const logoutSuccess = (): IAction => ({
-  type: EActionKey.LOGOUT_SUCCESS
+  type: EActionKey.LOGOUT_SUCCESS,
+  payload: undefined
 });

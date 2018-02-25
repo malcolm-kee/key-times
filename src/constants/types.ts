@@ -4,27 +4,10 @@ export interface IKeyList<T> {
   [key: string]: T;
 }
 
-export interface IEventStore {
-  data: IKeyList<IEvent>;
-}
-
-export interface IAuthStore {
-  status: EAuthState;
-  userName: string | null;
-  userEmail: string | null;
-  userPhotoUrl: string | null;
-  errorMessage: string | null;
-}
-
-export interface IStore {
-  event: IEventStore;
-  auth: IAuthStore;
-}
-
 // tslint:disable-next-line:no-any
 export interface IAction<P = any> {
   type: EActionKey;
-  payload?: P;
+  payload: P;
 }
 
 export interface IEvent {
@@ -47,4 +30,25 @@ export interface ICalendarEvent {
   title: string;
   getPlainObj: () => IEvent;
   getPeriod: () => string;
+}
+
+export interface IEventStore {
+  data: IKeyList<IEvent>;
+}
+
+export interface IUser {
+  name: string | null;
+  email: string | null;
+  photoUrl: string | null;
+}
+
+export interface IAuthStore {
+  status: EAuthState;
+  errorMessage: string | null;
+  user: IUser | null;
+}
+
+export interface IStore {
+  event: IEventStore;
+  auth: IAuthStore;
 }

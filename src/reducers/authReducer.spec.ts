@@ -7,30 +7,26 @@ describe('authReducer', () => {
   const user = {
     email: 'malcolm.keeweesiong@gmail.com',
     name: 'Malcolm',
-    photoURL: 'google.com/images/1298afh'
+    photoUrl: 'google.com/images/1298afh'
   };
 
   test('loginSuccess', () => {
     const initialState: IAuthStore = {
       status: EAuthState.ANONYMOUS,
-      userName: null,
-      userEmail: null,
-      userPhotoUrl: null,
+      user: null,
       errorMessage: null
     };
 
     const finalState: IAuthStore = {
       status: EAuthState.LOGGED_IN,
-      userName: user.name,
-      userEmail: user.email,
-      userPhotoUrl: user.photoURL,
-      errorMessage: null
+      errorMessage: null,
+      user
     };
 
     expect(
       authReducer(
         initialState,
-        loginSuccess(user.email, user.name, user.photoURL)
+        loginSuccess(user.email, user.name, user.photoUrl)
       )
     ).toEqual(finalState);
   });
@@ -38,17 +34,13 @@ describe('authReducer', () => {
   test('logout', () => {
     const initialState: IAuthStore = {
       status: EAuthState.LOGGED_IN,
-      userName: user.name,
-      userEmail: user.email,
-      userPhotoUrl: user.photoURL,
-      errorMessage: null
+      errorMessage: null,
+      user
     };
 
     const finalState: IAuthStore = {
       status: EAuthState.ANONYMOUS,
-      userName: null,
-      userEmail: null,
-      userPhotoUrl: null,
+      user: null,
       errorMessage: null
     };
 
