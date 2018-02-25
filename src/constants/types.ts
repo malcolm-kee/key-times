@@ -1,4 +1,4 @@
-import { EActionKey } from './enum';
+import { EActionKey, EAuthState } from './enum';
 
 export interface IKeyList<T> {
   [key: string]: T;
@@ -8,8 +8,17 @@ export interface IEventStore {
   data: IKeyList<IEvent>;
 }
 
+export interface IAuthStore {
+  status: EAuthState;
+  userName: string | null;
+  userEmail: string | null;
+  userPhotoUrl: string | null;
+  errorMessage: string | null;
+}
+
 export interface IStore {
   event: IEventStore;
+  auth: IAuthStore;
 }
 
 // tslint:disable-next-line:no-any

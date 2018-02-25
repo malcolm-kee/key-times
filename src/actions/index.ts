@@ -26,3 +26,20 @@ export const addEvent = (
     id: uuid()
   }
 });
+
+export const loginSuccess = (
+  userEmail: string,
+  userName: string,
+  userPhotoUrl: string
+): IAction => ({
+  type: EActionKey.LOGIN_SUCCESS,
+  payload: {
+    userEmail,
+    userName,
+    userPhotoUrl
+  }
+});
+
+export const logoutSuccess = (): IAction => ({
+  type: EActionKey.LOGOUT_SUCCESS
+});
