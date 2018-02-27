@@ -28,9 +28,9 @@ export const addEvent = (
 });
 
 export const loginSuccess = (
-  userEmail: string,
-  userName: string,
-  userPhotoUrl: string
+  userEmail: string | null,
+  userName: string | null,
+  userPhotoUrl: string | null
 ): IAction<IUser> => ({
   type: EActionKey.LOGIN_SUCCESS,
   payload: {
