@@ -4,6 +4,11 @@ import { IAction, IEvent, IUser } from '../constants/types';
 import { EActionKey } from '../constants/enum';
 import { CalendarEvent } from '../models/CalendarEvent';
 
+export const restoreEvents = (events: IEvent[]): IAction<IEvent[]> => ({
+  type: EActionKey.RESTORE_EVENTS,
+  payload: events
+});
+
 export const setEvents = (
   events: CalendarEvent[]
 ): IAction<{ data: IEvent[] }> => ({

@@ -14,20 +14,7 @@ import { CalendarEvent } from '../models/CalendarEvent';
 // };
 
 const DEFAULT_STATE: IEventStore = {
-  data: {
-    a111: {
-      id: 'a111',
-      title: 'Quick Chat',
-      startDate: new Date(2018, 1, 27, 8, 20).toISOString(),
-      endDate: new Date(2018, 1, 27, 11, 30).toISOString()
-    },
-    a112: {
-      id: 'a112',
-      title: 'Slow Chat',
-      startDate: new Date(2018, 1, 27, 12, 20).toISOString(),
-      endDate: new Date(2018, 1, 27, 12, 30).toISOString()
-    }
-  }
+  data: {}
 };
 
 export const eventReducer = (
@@ -35,6 +22,17 @@ export const eventReducer = (
   action: IAction
 ): IEventStore => {
   switch (action.type) {
+    case EActionKey.RESTORE_EVENTS:
+      return {
+        ...state,
+        data: action.payload.reduce((acc: IKeyList<IEvent>, event: IEvent) => {
+          return {
+            ...acc,
+            [event.id]: event
+          };
+        }, {})
+      };
+
     case EActionKey.SET_EVENTS:
       return {
         ...state,

@@ -13,7 +13,11 @@ export const subscribe = (subscriber: (event: IEvent[]) => void): void => {
   });
 };
 
-export const add = (event: IEvent): Promise<null> =>
+export const add = (event: {
+  startDate: string;
+  endDate: string;
+  title: string;
+}): Promise<null> =>
   new Promise((resolve, reject) => {
     eventsRef
       .add(event)

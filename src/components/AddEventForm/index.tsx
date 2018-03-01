@@ -1,9 +1,7 @@
 import * as React from 'react';
-import { Dispatch } from 'redux';
-import { connect } from 'react-redux';
 import { Formik, FormikProps } from 'formik';
 
-import { addEvent } from '../../actions';
+import { add } from '../../services/events';
 import { getDefaultHTMLPeriod } from '../../utils/date';
 import { AddEventFormView } from './view';
 
@@ -18,7 +16,6 @@ interface IFormValues {
 const defaultValues = getDefaultHTMLPeriod();
 
 interface IProps {
-  dispatchAddEvent: (title: string, startDate: string, endDate: string) => void;
   onFormSubmitted?: () => void;
 }
 
@@ -34,7 +31,7 @@ class AddEventFormContainer extends React.Component<IProps> {
           endTime: defaultValues.endTime
         }}
         onSubmit={(values: IFormValues) => {
-          const { dispatchAddEvent, onFormSubmitted } = this.props;
+          const { onFormSubmitted } = this.props;
 
           const startDate = new Date(
             `${values.startDate} ${values.startTime}`
@@ -43,7 +40,7 @@ class AddEventFormContainer extends React.Component<IProps> {
             `${values.startDate} ${values.endTime}`
           ).toISOString();
           const title = values.title;
-          dispatchAddEvent(title, startDate, endDate);
+          add({ title, startDate, endDate });
           if (onFormSubmitted) {
             onFormSubmitted();
           }
@@ -56,12 +53,4 @@ class AddEventFormContainer extends React.Component<IProps> {
   }
 }
 
-const mapDispatchToProps = (dispatch: Dispatch<{}>) => ({
-  dispatchAddEvent(title: string, startDate: string, endDate: string) {
-    dispatch(addEvent(title, startDate, endDate));
-  }
-});
-
-export const AddEventForm = connect(null, mapDispatchToProps)(
-  AddEventFormContainer
-);
+export const AddEventForm = AddEventFormContainer;
